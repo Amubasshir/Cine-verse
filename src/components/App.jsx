@@ -4,13 +4,15 @@ import { Route, Routes } from 'react-router-dom';
 import Movies from './Movies/Movies';
 import NavBar from './NavBar/NavBar';
 import Profile from './Profile/Profile';
-
+import useStyles from './style';
 const App = () => {
+  const classes = useStyles();
   return (
-    <div>
-      <NavBar />
+    <div className={classes.root}>
       <CssBaseline />
-      <main>
+      <NavBar />
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
         <Routes>
           <Route path="/" element={<Movies />}></Route>
           <Route path="Profile" element={<Profile />}></Route>
