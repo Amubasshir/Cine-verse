@@ -8,19 +8,22 @@ import {
   AppBar,
   Avatar,
   Button,
+  Drawer,
   IconButton,
   Toolbar,
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 import useStyles from './styles';
 const NavBar = () => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 600px)');
   const theme = useTheme();
   const isAuthenticated = true;
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <>
       <AppBar position="fixed">
@@ -65,6 +68,30 @@ const NavBar = () => {
           {isMobile && 'search...'}
         </Toolbar>
       </AppBar>
+      <div>
+        <nav className="classes.drawer">
+          {isMobile ? (
+            <Drawer
+              variant="temporary"
+              anchor="right"
+              open={mobileOpen}
+              className={classes.drawerBackground}
+              class={{ paper: classes.drawerPaper }}
+              ModalProps={{ keepMounted: true }}
+            >
+              <Sidebar setMobileOpen={setMobileOpen} />
+            </Drawer>
+          ) : (
+            <Drawer
+              classes={{ paper: classes.drawerPaper }}
+              variant="permanent"
+              open
+            >
+              <Sidebar setMobileOpen={setMobileOpen} />
+            </Drawer>
+          )}
+        </nav>
+      </div>
     </>
   );
 };
