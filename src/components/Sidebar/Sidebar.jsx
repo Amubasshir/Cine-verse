@@ -6,32 +6,21 @@ import {
   ListItemText,
   ListSubheader,
 } from '@mui/material';
-import { useTheme } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
 const categories = [
-  {
-    label: 'Popular',
-    value: 'popular',
-    label: 'Top Rated',
-    value: 'top_rated',
-    label: 'Upcoming',
-    value: 'upcoming',
-  },
+  { label: 'Popular', value: 'popular' },
+  { label: 'Top Rated', value: 'top_rated' },
+  { label: 'Upcoming', value: 'upcoming' },
 ];
 const demos = [
-  {
-    label: 'Comedy',
-    value: 'comedy',
-    label: 'Action',
-    value: 'action',
-    label: 'Horror',
-    value: 'horror',
-    label: 'Animation',
-    value: 'animation',
-  },
+  { label: 'Comedy', value: 'comedy' },
+  { label: 'Action', value: 'action' },
+  { label: 'Horror', value: 'horror' },
+  { label: 'Animation', value: 'animation' },
 ];
 
 const redLogo = `https://upload.wikimedia.org/wikipedia/commons/9/9d/REDLogo.jpg`;
@@ -53,16 +42,35 @@ const Sidebar = ({ setMobileOpen }) => {
       <Divider />
       <List>
         <ListSubheader> Categories</ListSubheader>
-        {demos.map(({ label, value }) => (
+        {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
             <ListItem onClick={() => {}} button>
               <ListItemIcon>
-                <img
+                {/* <img
                   src={redLogo}
                   alt=""
                   className={classes.genreImages}
                   height={30}
-                />
+                /> */}
+              </ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <ListSubheader> Genres</ListSubheader>
+        {demos.map(({ label, value }) => (
+          <Link key={value} className={classes.links} to="/">
+            <ListItem onClick={() => {}} button>
+              <ListItemIcon>
+                {/* <img
+                  src={redLogo}
+                  alt=""
+                  className={classes.genreImages}
+                  height={30}
+                /> */}
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
